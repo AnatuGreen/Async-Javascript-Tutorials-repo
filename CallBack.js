@@ -441,5 +441,13 @@ butt.addEventListener("click", () => {
     })
     .then(() => {
       addColor(2000, "hel3", "orange", 30);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 });
+
+//NEW TOPIC: ASYNC AWAIT:
+//Allows us to write asynchronous javascript without endlessly writing callbacks.
+//Await will always wait until the promise is settled but await only can be used if async is written iin front of the function.
+//Async function always returns a promise

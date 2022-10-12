@@ -1,0 +1,5 @@
+Lesson taken on 09/Oct/2022
+
+Callback Functions!
+
+A callback function is a function that is passed as an argument to another function.

@@ -409,6 +409,37 @@ function inPutValidator() {
 
 /*
 Here is another example of Promises:
-This time we are going to replicate to get the result we got with the example in callback hell but to ttry to avoid the trouble associated with callback hell. We have 3 paragraphs on the html with classes hel1 - hel3. We want the colors and text sizes of the texts contained in these paragraphs to changes on specific timeouts but we want these to happen in sequences. The first will happen, then the timer for the second will follow and then the last timer will follow.
+This time we are going to replicate to get the result we got with the example in callback hell but to ttry to avoid the trouble associated with callback hell. We have 3 paragraphs on the html with IDs hel1 - hel3. We want the colors and text sizes of the texts contained in these paragraphs to changes on specific timeouts but we want these to happen in sequences. The first will happen, then the timer for the second will follow and then the last timer will follow.
 All will start after the "Click me" button is clicked.
 */
+
+let butt = document.getElementById("butt");
+
+//The function that will be called when button is clicked. It will contain the promise initiation while tyhe button adeventlistener will contain the remaining part
+function addColor(time, selector, newColor, newSize) {
+  //Create a dynamic element selector that take in an argument
+  const selected = document.getElementById(selector);
+  return new Promise((resolve, reject) => {
+    if (selected) {
+      setTimeout(() => {
+        selected.setAttribute(
+          "style",
+          `color: ${newColor};  background-color: lightgray; font-weight:bold; font-size: ${newSize}px`
+        );
+        resolve();
+      }, time);
+    } else {
+      reject("Sorry no valid selection was made!");
+    }
+  });
+}
+
+butt.addEventListener("click", () => {
+  addColor(2000, "hel1", "red", 20)
+    .then(() => {
+      addColor(2000, "hel2", "green", 25);
+    })
+    .then(() => {
+      addColor(2000, "hel3", "orange", 30);
+    });
+});
